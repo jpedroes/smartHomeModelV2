@@ -5,11 +5,13 @@ package smartHomeModelV2;
 import java.util.Random;
 
 import cartago.Artifact;
+import cartago.INTERNAL_OPERATION;
 import cartago.OPERATION;
 import cartago.OpFeedbackParam;
 
 public class FaceDetection extends Artifact {
 	
+	private String s = "Strange Detected";
 
 	@OPERATION
 	void atHome(OpFeedbackParam<String> status){
@@ -40,6 +42,21 @@ public class FaceDetection extends Artifact {
 		else if(i == 6){
 			status.set("Father, Mother, Son");
 		}
+				
+	}
+	
+	
+	@OPERATION
+	void startStrange(){
+		execInternalOp("run");
+	}
+	
+	@INTERNAL_OPERATION void run() {
+		while(true){
+			await_time(2500);
+				if( 4 > new Random().nextInt(10)){
+					signal("detected", s);
+			}
+		}
 	}
 }
-

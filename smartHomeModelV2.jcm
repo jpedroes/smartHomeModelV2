@@ -10,14 +10,18 @@
 
 mas smartHomeModelV2 {
 
-    agent guest
+    agent anti_fire
+   // agent guest             ----- >   não incluso na versão de defesa(foi apensa uma ideia) para aumentar o projeto) 
     agent manager
-    agent music_agent
+    //agent music_agent       ---- >   não incluso na versão de defesa(foi apensa uma ideia para aumentar o projeto)
     agent tv
     agent cold_agent
+    agent hot_agent
     agent light_agent
     agent deficient
-/* 
+    agent strange_detect
+    
+    /* 
    agent definition
 
       <agent>     ::= agent <name> [ : <source> ] { <parameter>* }

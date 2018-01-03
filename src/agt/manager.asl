@@ -1,4 +1,4 @@
-// Agent maneger in project smartHomeModelV2
+// Agent manager in project smartHomeModelV2
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
@@ -24,14 +24,14 @@
 	!generateBroadcast.	
 
 +?setup(ClockDate, FaceDetection, LearnProfile):true <-
-makeArtifact("ClockDate", "smartHomeModelV2.ClockDate", [], ClockDate);
-makeArtifact("FaceDetection", "smartHomeModelV2.FaceDetection", [], FaceDetection);
-makeArtifact("LearnProfile", "smartHomeModelV2.LearnProfile", [], LearnProfile);
-focus(ClockDate);
-start[artifact_id(ClockDate)];
-start[artifact_id(LearnProfile)];
-timeNow(T)[artifact_id(ClockDate)]
-.
+	makeArtifact("ClockDate", "smartHomeModelV2.ClockDate", [], ClockDate);
+	makeArtifact("FaceDetection", "smartHomeModelV2.FaceDetection", [], FaceDetection);
+	makeArtifact("LearnProfile", "smartHomeModelV2.LearnProfile", [], LearnProfile);
+	focus(ClockDate);
+	start[artifact_id(ClockDate)];
+	start[artifact_id(LearnProfile)];
+	timeNow(T)[artifact_id(ClockDate)]
+	.
 
 -?setup(ClockDate, FaceDetection, LearnProfile):true <-
 lookupArtifact("ClockDate", ClockDate);
@@ -53,11 +53,11 @@ focus(ClockDate).
 +profile(P):true<-
 .broadcast(tell, 2).
 
-//recebendo plano de agente externo
-+!kqml_received(guest, tellHow, Plan, M):true
-<- .add_plan(Plan, guest);
-!star
-.
+//recebendo plano de agente externo do agente visitante, (funciona mas não ficou na versão final de defesa)
+//+!kqml_received(guest, tellHow, Plan, M):true
+//<- .add_plan(Plan, guest);
+//!star
+//.
 
 +!adapt:true<-  
 ?setup(ClockDate, FaceDetection, LearnProfile);
@@ -70,5 +70,3 @@ planName(X)[artifact_id(LearnProfile)];
 
 
 +hour(T)<- .print("Hour:",T).
-
-

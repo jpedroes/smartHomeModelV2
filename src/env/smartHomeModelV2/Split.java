@@ -24,4 +24,3 @@ public class Split extends Artifact {
 		status.set("Split is off");
 	}
 }
-

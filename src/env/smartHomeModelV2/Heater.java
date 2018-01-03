@@ -25,4 +25,3 @@ public class Heater extends Artifact {
 	}
 	
 }
-
